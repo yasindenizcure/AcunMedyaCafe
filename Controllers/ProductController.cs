@@ -1,4 +1,5 @@
 ﻿using AcunMedyaCafe.Context;
+using AcunMedyaCafe.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,36 @@ namespace AcunMedyaCafe.Controllers
                                           }).ToList();
             ViewBag.v = values;
             return View();
+        }
+        [HttpPost]
+        public IActionResult AddProduct(Product model)
+        {
+            if (model.ImageFile != null) 
+            {
+                //uygulamanın çalıştığı dizini al
+                var currentDirectory = Directory.GetCurrentDirectory();
+
+                //uygulamanın uzantısını al(jpg,png)
+                var extension = Path.GetExtension(model.ImageFile.FileName);
+
+                //benzersiz dosya adı oluştur
+                var filename = Guid.NewGuid().ToString();
+
+                //kayıt edilecek dosyanın yolu
+                var saveLocation = Path.Combine(currentDirectory, "wwwroot/images", filename + extension);
+
+                //belirtilen konumda bir dosya oluştur
+                var stream = new FileStream(saveLocation, FileMode.Create);
+
+                //dosyayı fiziksel olarak sunucuya yazar
+                model.ImageFile.CopyTo(stream);
+
+
+                model.ImageUrl="/images/" + filename + extension; 
+            }
+            _context.Products.Add(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
