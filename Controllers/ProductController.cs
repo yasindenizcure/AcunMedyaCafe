@@ -55,10 +55,58 @@ namespace AcunMedyaCafe.Controllers
                 //dosyayı fiziksel olarak sunucuya yazar
                 model.ImageFile.CopyTo(stream);
 
-
                 model.ImageUrl="/images/" + filename + extension; 
             }
             _context.Products.Add(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult UpdateProduct(int id) 
+        {
+            List<SelectListItem> values = (from x in _context.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
+            var value = _context.Products.Find(id);
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(Product model)
+        {
+            if (model.ImageFile != null)
+            {
+                //uygulamanın çalıştığı dizini al
+                var currentDirectory = Directory.GetCurrentDirectory();
+
+                //uygulamanın uzantısını al(jpg,png)
+                var extension = Path.GetExtension(model.ImageFile.FileName);
+
+                //benzersiz dosya adı oluştur
+                var filename = Guid.NewGuid().ToString();
+
+                //kayıt edilecek dosyanın yolu
+                var saveLocation = Path.Combine(currentDirectory, "wwwroot/images", filename + extension);
+
+                //belirtilen konumda bir dosya oluştur
+                var stream = new FileStream(saveLocation, FileMode.Create);
+
+                //dosyayı fiziksel olarak sunucuya yazar
+                model.ImageFile.CopyTo(stream);
+
+                model.ImageUrl = "/images/" + filename + extension;
+            }
+            _context.Products.Update(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public IActionResult DeleteProduct(int id)
+        {
+            var value = _context.Products.Find(id);
+            _context.Products.Remove(value);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
