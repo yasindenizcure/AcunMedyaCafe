@@ -3,20 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AcunMedyaCafe.ViewComponents
 {
-    public class _DefaultAboutComponentPartial: ViewComponent
+    public class _DefaultSocialMediaComponentPartial: ViewComponent
     {
         private readonly CafeContext _context;
 
-        public _DefaultAboutComponentPartial(CafeContext context)
+        public _DefaultSocialMediaComponentPartial(CafeContext context)
         {
             _context = context;
         }
-
         public IViewComponentResult Invoke()
         {
-            var values = _context.Abouts.FirstOrDefault();
-            return View(values);
+            var socialMedia = _context.SocialMedias.ToList();
+            return View(socialMedia);
         }
     }
 }
-

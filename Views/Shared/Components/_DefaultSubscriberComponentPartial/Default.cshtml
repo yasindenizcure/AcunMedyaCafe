@@ -1,0 +1,12 @@
+﻿@model AcunMedyaCafe.Entities.Subscriber
+
+<form asp-controller="Subscriber" asp-action="AddSubscriber" method="post" class="form-inline">
+    <input asp-for="Email" class="form-control" placeholder="E-posta adresinizi girin" />
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-paper-plane"></i>
+    </button>
+    <span asp-validation-for="Email" class="text-danger"></span>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
