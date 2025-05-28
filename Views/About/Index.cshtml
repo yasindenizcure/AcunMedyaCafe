@@ -1,0 +1,48 @@
+﻿@model List<AcunMedyaCafe.Entities.About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Hakkında Tablosu </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tablo</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Hakkında</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Ana Başlık</th>
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>@item.BoldText</td>
+                                    <td><a href="/About/UpdateAbout/@item.AboutId" class="badge badge-info">Güncelle</a></td>
+                                    <td><a href="/About/DeleteAbout/@item.AboutId" class="badge badge-danger">Sil</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <a href="/About/AddAbout" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Yeni Hakkında</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

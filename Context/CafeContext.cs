@@ -18,7 +18,7 @@ namespace AcunMedyaCafe.Context
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
-        
         public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

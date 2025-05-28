@@ -260,6 +260,25 @@ namespace AcunMedyaCafe.Migrations
                     b.ToTable("Testimonials");
                 });
 
+            modelBuilder.Entity("AcunMedyaCafe.Entities.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("AcunMedyaCafe.Entities.Product", b =>
                 {
                     b.HasOne("AcunMedyaCafe.Entities.Category", "Category")

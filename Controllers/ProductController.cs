@@ -1,11 +1,13 @@
 ﻿using AcunMedyaCafe.Context;
 using AcunMedyaCafe.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AcunMedyaCafe.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly CafeContext _context;
