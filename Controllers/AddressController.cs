@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcunMedyaCafe.Controllers
 {
     [Authorize]
-    public class TestimonialController : Controller
+    public class AddressController : Controller
     {
         private readonly CafeContext _context;
-        private readonly IValidator<Testimonial> _validator;
+        private readonly IValidator<Address> _validator;
 
-        public TestimonialController(CafeContext context, IValidator<Testimonial> validator)
+        public AddressController(CafeContext context, IValidator<Address> validator)
         {
             _context = context;
             _validator = validator;
@@ -20,18 +20,18 @@ namespace AcunMedyaCafe.Controllers
 
         public IActionResult Index()
         {
-            var values = _context.Testimonials.ToList();
+            var values = _context.Addresses.ToList();
             return View(values);
         }
 
         [HttpGet]
-        public IActionResult AddTestimonial()
+        public IActionResult AddAddress()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddTestimonial(Testimonial p)
+        public IActionResult AddAddress(Address p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -43,31 +43,31 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Add(p);
+            _context.Addresses.Add(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteTestimonial(int id)
+        public IActionResult DeleteAddress(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.Addresses.Find(id);
             if (value != null)
             {
-                _context.Testimonials.Remove(value);
+                _context.Addresses.Remove(value);
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult UpdateTestimonial(int id)
+        public IActionResult UpdateAddress(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.Addresses.Find(id);
             return View(value);
         }
 
         [HttpPost]
-        public IActionResult UpdateTestimonial(Testimonial p)
+        public IActionResult UpdateAddress(Address p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -79,7 +79,7 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Update(p);
+            _context.Addresses.Update(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

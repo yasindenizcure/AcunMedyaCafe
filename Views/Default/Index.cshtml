@@ -66,17 +66,57 @@
 						<div class="single-footer-widget">
 							<h6>Bülten</h6>
 							<p>Yeniliklerden haberdar olun!</p>
-							@await Component.InvokeAsync("_DefaultSubscriberComponentPartial")
+							@await Html.PartialAsync("~/Views/Subscriber/AddSubscriber.cshtml")
 
 						</div>
 					</div>
 
 					@await Component.InvokeAsync("_DefaultSocialMediaComponentPartial")
-
 				</div>
 			</div>
 		</footer>
 	<!-- End footer Area -->
 	@await Component.InvokeAsync("_DefaultScriptComponentPartial")
+		<!-- Sayfanın en altına ekle: -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<script>
+			$(document).ready(function () {
+				$('#newsletter-form').on('submit', function (e) {
+					e.preventDefault();
+
+					const formData = $(this).serialize();
+
+					$.ajax({
+						type: 'POST',
+						url: '/Subscriber/AddSubscriber',
+						data: formData,
+						success: function (response) {
+							Swal.fire({
+								icon: response.success ? 'success' : 'error',
+								title: response.success ? 'Başarılı' : 'Hata',
+								text: response.message,
+								confirmButtonText: 'Tamam',
+								timer: 3000
+							});
+
+							if (response.success) {
+								$('#newsletter-form')[0].reset();
+							}
+						},
+						error: function () {
+							Swal.fire({
+								icon: 'error',
+								title: 'Hata',
+								text: 'Bir hata oluştu. Lütfen tekrar deneyin.',
+								confirmButtonText: 'Tamam'
+							});
+						}
+					});
+				});
+			});
+		</script>
+
 </body>
 </html>

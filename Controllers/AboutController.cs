@@ -10,53 +10,79 @@ namespace AcunMedyaCafe.Controllers
     [Authorize]
     public class AboutController : Controller
     {
-        private readonly CafeContext cafeContext;
-        private readonly IValidator<About> validator;
+        private readonly CafeContext _context;
+        private readonly IValidator<About> _validator;
 
-        public AboutController(CafeContext cafeContext, IValidator<About> validator)
+        public AboutController(CafeContext context, IValidator<About> validator)
         {
-            this.cafeContext = cafeContext;
-            this.validator = validator;
+            _context = context;
+            _validator = validator;
         }
 
         public IActionResult Index()
         {
-            var values = cafeContext.Abouts.ToList();
+            var values = _context.Abouts.ToList();
             return View(values);
         }
+
         [HttpGet]
         public IActionResult AddAbout()
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult AddAbout(About p) 
+        public IActionResult AddAbout(About p)
         {
-                cafeContext.Abouts.Add(p);
-                cafeContext.SaveChanges();
-                return RedirectToAction("Index");
-        }
-        public IActionResult DeleteAbout(int id)
-        {
-            var value = cafeContext.Abouts.Find(id);
-            cafeContext.Remove(value);
-            cafeContext.SaveChanges();
+            var validationResult = _validator.Validate(p);
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return View(p); // Hatalıysa formu tekrar göster
+            }
+
+            _context.Abouts.Add(p);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteAbout(int id)
+        {
+            var value = _context.Abouts.Find(id);
+            if (value != null)
+            {
+                _context.Abouts.Remove(value);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult UpdateAbout(int id)
         {
-            var value = cafeContext.Abouts.Find(id);
+            var value = _context.Abouts.Find(id);
             return View(value);
         }
 
         [HttpPost]
         public IActionResult UpdateAbout(About p)
         {
-            cafeContext.Abouts.Update(p);
-            cafeContext.SaveChanges();
+            var validationResult = _validator.Validate(p);
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return View(p); // Hatalıysa formu tekrar göster
+            }
+
+            _context.Abouts.Update(p);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

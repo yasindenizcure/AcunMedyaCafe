@@ -14,21 +14,24 @@ namespace AcunMedyaCafe.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddSubscriber(Subscriber model)
+        public async Task<IActionResult> AddSubscriber([FromForm] Subscriber model)
         {
-            Console.WriteLine("Gelen email: " + model.Email);
-
-            if (!ModelState.IsValid)
-                return RedirectToAction("Index", "Default");
+            if (!ModelState.IsValid || string.IsNullOrWhiteSpace(model.Email))
+            {
+                return Json(new { success = false, message = "Lütfen geçerli bir email adresi girin." });
+            }
 
             var exists = _context.Subscribers.Any(x => x.Email == model.Email);
             if (!exists)
             {
                 _context.Subscribers.Add(model);
                 await _context.SaveChangesAsync();
+                return Json(new { success = true, message = "Kayıt başarıyla oluşturuldu." });
             }
-
-            return RedirectToAction("Index", "Default");
+            else
+            {
+                return Json(new { success = false, message = "Bu email adresi zaten kayıtlı." });
+            }
         }
     }
 }

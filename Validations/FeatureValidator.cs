@@ -7,11 +7,11 @@ namespace AcunMedyaCafe.Validations
     {
         public FeatureValidator() 
         {
-            RuleFor(x => x.Title).NotEmpty().WithMessage("Başlık kısmı boş geçilemez.");
-
-            RuleFor(x => x.SubTitle).NotEmpty().WithMessage("Alt başlık kısmı boş geçilemez.");
-
-            RuleFor(x => x.ImageUrl).NotEmpty().WithMessage("Resim kısmı boş geçilemez.");
+            RuleFor(x => x.Title).NotEmpty().WithMessage("Başlık boş geçilemez.")
+                .MinimumLength(3).WithMessage("Başlık en az 3 karakter olmalıdır.");
+            RuleFor(x => x.SubTitle).NotEmpty().WithMessage("Alt başlık boş geçilemez.")
+                .MinimumLength(3).WithMessage("Alt Başlık en az 3 karakter olmalıdır.");
+            RuleFor(x => x.ImageUrl).NotEmpty().WithMessage("Görsel boş geçilemez.");
         }
     }
 }

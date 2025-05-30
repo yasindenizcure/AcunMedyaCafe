@@ -1,0 +1,47 @@
+﻿@model List<AcunMedyaCafe.Entities.Gallery>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Galeri Tablosu </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tablo</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Galeri</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Resim Url</th>
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img src="@item.PhotoUrl" /></td>
+                                    <td><a href="/Gallery/UpdateGallery/@item.GalleryId" class="badge badge-info">Güncelle</a></td>
+                                    <td><a href="/Gallery/DeleteGallery/@item.GalleryId" class="badge badge-danger">Sil</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <a href="/Gallery/AddGallery" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Yeni Resim</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

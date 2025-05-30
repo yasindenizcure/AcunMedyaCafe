@@ -1,16 +1,15 @@
-﻿@model AcunMedyaCafe.Entities.About
+﻿@model AcunMedyaCafe.Entities.Blog
 @{
-    ViewData["Title"] = "AddAbout";
+    ViewData["Title"] = "AddBlog";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title"> Hakkında Ekleme Sayfası </h3>
+        <h3 class="page-title"> Blog Ekleme Sayfası </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Ekleme İşlemi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Hakkında</li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li>
             </ol>
         </nav>
     </div>
@@ -20,19 +19,9 @@
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
-                            <label>Alt Başlık</label>
-                            <input type="text" asp-for="Subtitle" class="form-control" />
-                            <span asp-validation-for="Subtitle" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
                             <label>Başlık</label>
                             <input type="text" asp-for="Title" class="form-control" />
                             <span asp-validation-for="Title" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Ana Başlık</label>
-                            <input type="text" asp-for="BoldText" class="form-control" />
-                            <span asp-validation-for="BoldText" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label>Açıklama</label>
@@ -40,14 +29,19 @@
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label>Tarih</label>
+                            <input type="date" asp-for="Date" class="form-control" />
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>İçerik</label>
+                            <input type="text" asp-for="Content" class="form-control" />
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label>Resim</label>
                             <input type="text" asp-for="ImageUrl" class="form-control" />
                             <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Video</label>
-                            <input type="text" asp-for="VideoUrl" class="form-control" />
-                            <span asp-validation-for="VideoUrl" class="text-danger"></span>
                         </div>
                         <button class="btn btn-primary"> <i class="fa fa-save"> </i>  Kaydet </button>
                     </form>

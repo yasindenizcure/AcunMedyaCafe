@@ -7,7 +7,8 @@ namespace AcunMedyaCafe.Validations
     {
         public GalleryValidator() 
         {
-            RuleFor(x => x.PhotoUrl).NotEmpty().WithMessage("Resim kısmı boş geçilemez.");
+            RuleFor(x => x.PhotoUrl).NotEmpty().WithMessage("Resim linki boş geçilemez.")
+              .MinimumLength(10).WithMessage("Resim linki en az 10 karakter olmalıdır.");
         }
     }
 }

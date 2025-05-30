@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcunMedyaCafe.Controllers
 {
     [Authorize]
-    public class TestimonialController : Controller
+    public class BlogController : Controller
     {
         private readonly CafeContext _context;
-        private readonly IValidator<Testimonial> _validator;
+        private readonly IValidator<Blog> _validator;
 
-        public TestimonialController(CafeContext context, IValidator<Testimonial> validator)
+        public BlogController(CafeContext context, IValidator<Blog> validator)
         {
             _context = context;
             _validator = validator;
@@ -20,18 +20,18 @@ namespace AcunMedyaCafe.Controllers
 
         public IActionResult Index()
         {
-            var values = _context.Testimonials.ToList();
+            var values = _context.Blogs.ToList();
             return View(values);
         }
 
         [HttpGet]
-        public IActionResult AddTestimonial()
+        public IActionResult AddBlog()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddTestimonial(Testimonial p)
+        public IActionResult AddBlog(Blog p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -43,31 +43,31 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Add(p);
+            _context.Blogs.Add(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteTestimonial(int id)
+        public IActionResult DeleteBlog(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.Blogs.Find(id);
             if (value != null)
             {
-                _context.Testimonials.Remove(value);
+                _context.Blogs.Remove(value);
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult UpdateTestimonial(int id)
+        public IActionResult UpdateBlog(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.Blogs.Find(id);
             return View(value);
         }
 
         [HttpPost]
-        public IActionResult UpdateTestimonial(Testimonial p)
+        public IActionResult UpdateBlog(Blog p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -79,7 +79,7 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Update(p);
+            _context.Blogs.Update(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

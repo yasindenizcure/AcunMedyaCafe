@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcunMedyaCafe.Controllers
 {
     [Authorize]
-    public class TestimonialController : Controller
+    public class SocialMediaController : Controller
     {
         private readonly CafeContext _context;
-        private readonly IValidator<Testimonial> _validator;
+        private readonly IValidator<SocialMedia> _validator;
 
-        public TestimonialController(CafeContext context, IValidator<Testimonial> validator)
+        public SocialMediaController(CafeContext context, IValidator<SocialMedia> validator)
         {
             _context = context;
             _validator = validator;
@@ -20,18 +20,18 @@ namespace AcunMedyaCafe.Controllers
 
         public IActionResult Index()
         {
-            var values = _context.Testimonials.ToList();
+            var values = _context.SocialMedias.ToList();
             return View(values);
         }
 
         [HttpGet]
-        public IActionResult AddTestimonial()
+        public IActionResult AddSocialMedia()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddTestimonial(Testimonial p)
+        public IActionResult AddSocialMedia(SocialMedia p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -43,31 +43,31 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Add(p);
+            _context.SocialMedias.Add(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteTestimonial(int id)
+        public IActionResult DeleteSocialMedia(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.SocialMedias.Find(id);
             if (value != null)
             {
-                _context.Testimonials.Remove(value);
+                _context.SocialMedias.Remove(value);
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult UpdateTestimonial(int id)
+        public IActionResult UpdateSocialMedia(int id)
         {
-            var value = _context.Testimonials.Find(id);
+            var value = _context.SocialMedias.Find(id);
             return View(value);
         }
 
         [HttpPost]
-        public IActionResult UpdateTestimonial(Testimonial p)
+        public IActionResult UpdateSocialMedia(SocialMedia p)
         {
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
@@ -79,7 +79,7 @@ namespace AcunMedyaCafe.Controllers
                 return View(p); // Hatalıysa formu tekrar göster
             }
 
-            _context.Testimonials.Update(p);
+            _context.SocialMedias.Update(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
