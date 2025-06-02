@@ -3,6 +3,7 @@
 🚀 ASP.NET Core Web Projem | Entity Framework Code First & Modern Web Teknolojileri ⚡
 Merhaba! 👋 Bu repo, ASP.NET Core ile geliştirilmiş tam donanımlı bir web projesidir.
 ---------------------------------------------------------------------------------------
+
 ⚙️ Teknolojiler ve özellikler:
 
 🛠 ASP.NET Core MVC — Güçlü ve esnek backend
@@ -22,6 +23,7 @@ Merhaba! 👋 Bu repo, ASP.NET Core ile geliştirilmiş tam donanımlı bir web 
 🔐 Cookie Authentication — Güvenli kullanıcı oturum yönetimi
 
 🛡 ValidateAntiForgeryToken — CSRF saldırılarına karşı koruma
+
 ---------------------------------------------------------------------------------------
 📚 Proje, tam işlevsel kullanıcı doğrulama ve yetkilendirme mekanizmaları içerir.
 💡 Kod düzenli, anlaşılır ve güncellenebilir şekilde yazıldı.
