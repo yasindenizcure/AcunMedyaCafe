@@ -6,23 +6,23 @@ Merhaba! 👋 Bu repo, ASP.NET Core ile geliştirilmiş tam donanımlı bir web 
 
 ⚙️ Teknolojiler ve özellikler:
 
-🛠 ASP.NET Core MVC — Güçlü ve esnek backend
+🛠 ASP.NET Core MVC
 
-🗄 Entity Framework Code First — Database’i kodla yönet, veritabanı şeması otomatik oluşsun!
+🗄 Entity Framework Code First 
 
-💾 MS SQL Server — Sağlam ve güvenilir veri deposu
+💾 MSSQL Server
 
-🎨 HTML + CSS + Bootstrap 5 — Modern, responsive ve şık arayüz tasarımı
+🎨 HTML + CSS + Bootstrap 5
 
-🔍 LINQ — Kolay ve güçlü veri sorguları
+🔍 LINQ 
 
-🔄 Ajax & jQuery — Sayfa yenilenmeden hızlı ve dinamik veri güncellemeleri
+🔄 Ajax & jQuery 
 
-✔️ FluentValidation ile temiz ve güçlü model doğrulama
+✔️ FluentValidation 
 
-🔐 Cookie Authentication — Güvenli kullanıcı oturum yönetimi
+🔐 Cookie Authentication
 
-🛡 ValidateAntiForgeryToken — CSRF saldırılarına karşı koruma
+🛡 ValidateAntiForgeryToken
 
 ---------------------------------------------------------------------------------------
 📚 Proje, tam işlevsel kullanıcı doğrulama ve yetkilendirme mekanizmaları içerir.
