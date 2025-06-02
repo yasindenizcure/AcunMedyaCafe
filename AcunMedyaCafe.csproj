@@ -31,6 +31,15 @@
     <None Include="wwwroot\coffee-master\scss\.DS_Store" />
     <None Include="wwwroot\coffee-master\scss\bootstrap\.DS_Store" />
     <None Include="wwwroot\coffee-master\scss\theme\.DS_Store" />
+    <None Include="wwwroot\login-form-15\.DS_Store" />
+    <None Include="wwwroot\login-form-15\css\.DS_Store" />
+    <None Include="wwwroot\login-form-15\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\login-form-15\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\login-form-15\fonts\.DS_Store" />
+    <None Include="wwwroot\login-form-15\images\.DS_Store" />
+    <None Include="wwwroot\login-form-15\js\.DS_Store" />
+    <None Include="wwwroot\login-form-15\scss\.DS_Store" />
+    <None Include="wwwroot\login-form-15\scss\bootstrap\.DS_Store" />
     <None Include="wwwroot\PurpleAdmin-Free-Admin-Template-1.0.0\.DS_Store" />
   </ItemGroup>
 
