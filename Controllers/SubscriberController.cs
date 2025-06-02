@@ -32,6 +32,8 @@ namespace AcunMedyaCafe.Controllers
             {
                 return Json(new { success = false, message = "Bu email adresi zaten kayıtlı." });
             }
+
         }
+
     }
 }

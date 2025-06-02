@@ -33,6 +33,7 @@ namespace AcunMedyaCafe.Controllers
         [HttpPost]
         public IActionResult AddGallery(Gallery p)
         {
+
             var validationResult = _validator.Validate(p);
             if (!validationResult.IsValid)
             {

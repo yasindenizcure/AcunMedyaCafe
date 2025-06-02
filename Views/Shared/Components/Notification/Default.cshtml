@@ -1,0 +1,29 @@
+﻿@model List<AcunMedyaCafe.Entities.Notification>
+
+<h6 class="p-3 mb-0">Bildirimler</h6>
+<div class="dropdown-divider"></div>
+
+@if (Model == null || !Model.Any())
+{
+    <p class="text-center p-3">Yeni bildirim yok.</p>
+}
+else
+{
+    foreach (var notification in Model)
+    {
+        <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+                <div class="preview-icon bg-info">
+                    <i class="mdi mdi-bell-outline"></i>
+                </div>
+            </div>
+            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">@notification.Message</h6>
+                <p class="text-gray ellipsis mb-0">@notification.Email</p>
+                <small class="text-muted">@notification.CreateDate.ToString("dd.MM.yyyy")</small>
+            </div>
+        </a>
+        <div class="dropdown-divider"></div>
+    }
+}
+<h6 class="p-3 mb-0 text-center"><a href="#">Tüm bildirimleri gör</a></h6>

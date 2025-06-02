@@ -20,5 +20,7 @@ namespace AcunMedyaCafe.Context
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

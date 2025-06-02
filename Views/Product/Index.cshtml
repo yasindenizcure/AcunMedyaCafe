@@ -8,9 +8,6 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title"> Ürün Tablosu </h3>
-        <a href="/Product/AddProduct" class="btn btn-gradient-success">
-            <i class="fa fa-plus-circle"></i> Yeni Ürün Ekle
-        </a>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tablo</a></li>
@@ -50,23 +47,23 @@
                                     <td><img src="@item.ImageUrl" style="height:65px;width:65px" /></td>
                                     <td>@item.Category.CategoryName</td>
                                     <td>
-                                        <a href="/Product/UpdateProduct/@item.ProductId" class="btn  btn-gradient-warning">
+                                        <a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-gradient-warning">
                                             <i class="fa fa-edit"></i> Güncelle
                                         </a>
                                     </td>
                                     <td>
-                                        <a onclick="deleteProduct(@item.ProductId)" class="btn  btn-gradient-danger">
+                                        <a onclick="deleteProduct(@item.ProductId)" class="btn btn-gradient-danger">
                                             <i class="fa fa-trash"></i> Sil
                                         </a>
                                     </td>
-                                    @* <td><a href="/Product/DeleteProduct/@item.ProductId" class="badge badge-danger">Sil</a></td> *@
                                 </tr>
                             }
-
-
                         </tbody>
                     </table>
-
+                    <br />
+                    <a href="/Product/AddProduct" class="btn btn-gradient-success">
+                        <i class="fa fa-plus-circle"></i> Yeni Ürün Ekle
+                    </a>
                 </div>
             </div>
         </div>
