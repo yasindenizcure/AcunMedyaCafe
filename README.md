@@ -50,6 +50,7 @@ Merhaba! 👋 Bu repo, ASP.NET Core ile geliştirilmiş tam donanımlı bir web 
 ![19](https://github.com/user-attachments/assets/b721987b-738f-4372-a327-8cadec48f5fa)
 ![20](https://github.com/user-attachments/assets/ca96d34e-cc9e-471f-9118-40fd7bbcf96c)
 ![21](https://github.com/user-attachments/assets/d8f2b499-1020-45fe-9b87-e9992fc1f222)
+![26](https://github.com/user-attachments/assets/aa73e31e-0923-4edd-b7ed-6b6f48ec17d2)
 ![22](https://github.com/user-attachments/assets/8c64d146-ccb9-4b87-b162-114b617974b4)
 ![23](https://github.com/user-attachments/assets/d6bd3520-b23d-43b4-8691-fdb08523431e)
 ![24](https://github.com/user-attachments/assets/298dcf0c-25bc-4ef0-a756-e43d31b40a0d)
