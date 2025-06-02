@@ -1,0 +1,101 @@
+﻿@model List<AcunMedyaCafe.Entities.Subscriber>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<!-- FontAwesome CDN Link -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-home"></i>
+            </span> Dashboard
+        </h3>
+        <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row">
+        <!-- Ürün Sayısı Kartı -->
+        <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-danger card-img-holder text-white d-flex align-items-center justify-content-center" style="height: 150px;">
+                <i class="fas fa-coffee" style="font-size: 64px; opacity: 0.3; position: absolute; top: 20px; left: 20px;"></i>
+                <div>
+                    <h4 class="font-weight-normal mb-3">
+                        Ürün Sayısı
+                    </h4>
+                    <h2 class="mb-5">@ViewBag.ProductCount</h2>
+                    <h6 class="card-text">Ürünler</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abone Sayısı Kartı -->
+        <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-info card-img-holder text-white d-flex align-items-center justify-content-center" style="height: 150px;">
+                <i class="fas fa-users" style="font-size: 64px; opacity: 0.3; position: absolute; top: 20px; left: 20px;"></i>
+                <div>
+                    <h4 class="font-weight-normal mb-3">
+                        Abone Sayısı
+                    </h4>
+                    <h2 class="mb-5">@ViewBag.SubscriberCount</h2>
+                    <h6 class="card-text">Abone Olanlar</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Referans Sayısı Kartı -->
+        <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-success card-img-holder text-white d-flex align-items-center justify-content-center" style="height: 150px;">
+                <i class="fas fa-comments" style="font-size: 64px; opacity: 0.3; position: absolute; top: 20px; left: 20px;"></i>
+                <div>
+                    <h4 class="font-weight-normal mb-3">
+                        Referans Sayısı
+                    </h4>
+                    <h2 class="mb-5">@ViewBag.TestimonialCount</h2>
+                    <h6 class="card-text">Referanslar</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Aboneler Tablosu -->
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Son Aboneler</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Mail Adresi </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.SubscriberId</td>
+                                        <td>@item.Email</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gerekli Scriptler -->
+<script src="~/PurpleAdmin-Free-Admin-Template-1.0.0/assets/vendors/chart.js/chart.umd.js"></script>
+<script src="~/PurpleAdmin-Free-Admin-Template-1.0.0/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="~/PurpleAdmin-Free-Admin-Template-1.0.0/assets/js/dashboard.js"></script>
